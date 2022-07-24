@@ -1,0 +1,24 @@
+logs
+.idea
+__pycache__
+data_set
+
+/data
+*/data
+/test_fun
+*/test_fun
+/log
+*/log
+/Data
+/EXE文件
+
+
+*.so
+*.lib
+*.dll
+# *.png
+*.pth
+*.pkl
+*.mvdat
+*.log
+*.exe

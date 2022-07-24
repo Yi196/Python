@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+</head>
+<body>
+<h1>修改学生信息：</h1>
+<h3> 学生ID：{{id}}</h3>
+<form method="post" action="/student/edit_2/{{id}}/">
+    {% csrf_token%}
+    <p hidden>      <!-- 隐藏该标签  因为传回的数据中需要 id 属性 -->
+        {{obj.id}}
+    </p>
+    <p>
+        姓名: {{obj.name}} {{obj.errors.name.0}}
+    </p>
+    <p>
+        班级: {{obj.class_id_id}} {{obj.errors.class_id_id.0}}
+    </p>
+    <p>
+    <input type="submit" value="确定">
+    </p>
+    {{meg}}
+<!--  id:<input type="text" value="{{lst_3.id}}" name="id" readonly > <br>-->
+<!--  姓名:<input type="text" name="name" value="{{lst_3.name}}"> <br>-->
+<!--  班级: <select name="title" >-->
+<!--            {%for item in lst_1%}-->
+<!--                {%if item.title == lst_3.title%}-->
+<!--                    <option value="{{item.id}}" selected>{{item.title}}</option>-->
+<!--                {%else%}-->
+<!--                    <option value="{{item.id}}">{{item.title}}</option>-->
+<!--                {%endif%}-->
+<!--            {%endfor%}-->
+<!--        </select>-->
+</form>
+</body>
+</html>

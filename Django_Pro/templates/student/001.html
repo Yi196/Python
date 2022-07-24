@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表格-教师</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.css">
+</head>
+<body>
+<div style="width:1000px; margin:0 auto;">
+<h1>教师 </h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>教师ID</th> <th>姓名</th> <th >操作</th><th >操作</th>    <!--colspan="2" 跨列-->
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in lst_1 %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td><a href="/student/edit_1/?id={{item.id}}&name={{item.name}}">修改</a></td>
+                <td><a href="/student/del_1/?id={{item.id}}">删除</a></td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    <a href="/student/add_1/" class="btn btn-default">添加</a>
+</div>
+
+<div style="width:1000px; margin:0 auto;">
+<h1>学生 </h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>学生ID</th> <th>姓名</th> <th>班级</th><th >操作</th><th >操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in lst_2 %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.class_id__title}}</td>
+                <td><a href="/student/edit_2/{{item.id}}/">修改</a></td>
+                <td><a href="/student/del_2/{{item.id}}/">删除</a></td>
+
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+        <a href="/student/add_2/" class="btn btn-default">添加</a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层次选择器</title>
+
+<!--后代选择器 离代码近的起作用 -->
+  <style>
+        body p{background:red}
+  </style>
+<!--子选择器 离代码近的起作用 -->
+  <style>
+          body>p{background:green}
+  </style>
+<!--相邻兄弟选择器 选目标下的一个兄弟-->
+  <style>
+          .a_1+p{background:yellow}
+  </style>
+<!--通用兄弟选择器 选目标下的所有兄弟-->
+  <style>
+          #a_2~li{background:grey}
+  </style>
+</head>
+<body>
+
+<p>1</p>
+<p class="a_1">2</p>
+<p>3</p>
+<p>4</p>
+<ul>
+  <li><p>5</p></li>
+  <li><p>6</p></li>
+  <li>
+    <ul>
+      <li id="a_2">7</li>
+      <li>8</li>
+      <li>9</li>
+    </ul>
+  </li>
+</ul>
+<p>10</p>
+<p>11</p>
+<p>12</p>
+</body>
+</html>

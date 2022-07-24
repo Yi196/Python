@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+</head>
+<body>
+<h1>请输入要添加内容</h1>
+<form action="/student/add_1/" method="post">
+    {% csrf_token%}
+  ID:<input type="text" name="id" required>
+  姓名:<input type="text" name="name" required>
+  <input type="submit" value="确定"> <br>
+  {{meg}}
+</form>
+</body>
+</html>

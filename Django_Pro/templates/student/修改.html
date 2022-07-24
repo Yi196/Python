@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+</head>
+<body>
+<form method="post" action="/student/edit_1/">
+    {% csrf_token%}
+  id:<input type="text" value="{{id}}" name="id" readonly> <br>
+  姓名:<input type="text" name="name" value="{{name}}"> <br>
+  <input type="submit" value="确定">
+</form>
+</body>
+</html>

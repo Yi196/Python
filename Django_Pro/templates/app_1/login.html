@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.css">
+</head>
+<body>
+  <h1 style="width:300px; margin:0 auto;">用户登录</h1>
+  <form method="post" action="/app_1/login/" >
+      {% csrf_token%}
+      <div class="form-group" style="width:300px; margin:0 auto;" >
+        <p>用户名：{{obj.user}} {{obj.errors.user.0}} </p>
+        <p>密码：{{obj.pwd}} {{obj.errors.pwd.0}}</p>
+        <p> <input type="submit" class="btn btn-default" value="登录"></input> </p>
+        {{meg}}
+      </div>
+  </form>
+
+<!--  <form method="post" action="/app_1/login/">-->
+<!--      {% csrf_token%}-->
+<!--      <p>{{obj.as_p}}</p>-->
+<!--  </form>-->
+</body>
+</html>

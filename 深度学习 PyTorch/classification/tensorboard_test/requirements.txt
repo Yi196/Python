@@ -1,0 +1,11 @@
+torchvision==0.7.0
+tqdm==4.42.1
+matplotlib==3.2.1
+torch==1.6.0
+Pillow
+tensorboard
+
+
+使用：
+在/runs目录下在命令行输入：tensorboard.exe --logdir=./
+启动后复制网址：http://localhost:6006/ 查看

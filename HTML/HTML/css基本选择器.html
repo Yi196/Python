@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css练习</title>
+<!--直接在HTML中定义css-->
+    <style>
+        h1{color : red;}
+
+        #id_1{color:#ff008a}
+
+        .lei2{ color:grey}
+
+        {background:yellow}
+    </style>
+<!--HTML和CSS分离-->
+    <link rel="stylesheet" href="../static/CSS/001.css">
+
+</head>
+<body>
+
+    <h1>方法一定义在HTML文件中</h1>
+    <h2 class="lei1">方法二 导入css文件</h2>
+    <h3 style="color:blue">方法三 写在< h3 style="color:blue">中 </h3>
+    <h1 class="lei2">类选择器 .类名 可复用</h1>
+    <h1 id="id_1">id选择器 #id名 全局id唯一</h1>      <!--id选择器  #id名-->
+    <ul>
+        <li>小明</li>
+        <li>小红</li>
+    </ul>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+</head>
+<body>
+<h1>请输入学生信息</h1>
+<form action="/student/add_2/" method="post">
+    {% csrf_token%}
+    <p>
+        学号: {{obj.id}} {{obj.errors.id.0}}
+    </p>
+    <p>
+        姓名: {{obj.name}} {{obj.errors.name.0}}
+    </p>    <p>
+        班级: {{obj.class_id_id}} {{obj.errors.class_id_id.0}}
+    </p>
+    </p>    <p>
+    <input type="submit" value="提交">
+    </p>
+    {{meg}}
+<!--  ID:<input type="text" name="id" required> <br>-->
+<!--  姓名:<input type="text" name="name" required> <br>-->
+<!--  班级: <select name="title" >-->
+<!--            {%for item in lst_1%}-->
+<!--                <option value="{{item.id}}">{{item.title}}</option>-->
+<!--            {%endfor%}-->
+<!--        </select>-->
+</form>
+</body>
+</html>

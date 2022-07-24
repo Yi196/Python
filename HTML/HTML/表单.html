@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>表单</title>
+</head>
+<body>
+<h2>用户登录</h2>
+<form method="get" action="列表 表格.html">
+  <p>只读<input type="text"  name="readonly" value="readonly只读" readonly> </p>
+  <!--placeholder=""提示信息 required不为空 pattern="\d+"正则表达式判断-->
+  <p>账号<input type="text" name="user" maxlength="10" size="30" placeholder="请输入账号" required pattern="\d+"> </p>
+  <p>密码<input type="password" name="pwd" maxlength="16" size="30" required> </p>
+<!-- 单选 -->
+  <p>
+    <input type="radio" value="boy" name="gender" checked> 男        <!-- 用name 声明是同一个组的-->
+    <input type="radio" value="girl" name="gender"> 女
+  </p>
+<!--多选-->
+  <p>爱好 <br>
+    <input type="checkbox" value="篮球" name="hobby"> 篮球 <br>   <!-- 用name 声明是同一个组的-->
+    <input type="checkbox" value="足球" name="hobby"> 足球 <br>
+    <input type="checkbox" value="跑步" name="hobby"> 跑步 <br>
+    <input type="checkbox" value="健身" name="hobby"> 健身 <br>
+  </p>
+<!--按钮 图像按钮-->
+  <input type="button" value="按钮" name="btn1" disabled> <br>
+  <input type="image" src="../static/image/001.jpg" width="200xp"> 图片按钮  按下等同提交 <br>
+<!--文件域-->
+  <input type="file" name="file">
+<!-- 下拉框 -->
+  <p>国家
+    <select name="country">
+      <option value="us">美国</option>
+      <option value="china" selected>中国</option>
+      <option value="eth">瑞士</option>
+    </select>
+  </p>
+<!-- 文本域 -->
+  <p>文本域 <br> <textarea name="textarea"  cols="30" rows="10">文本域内预览内容</textarea></p>
+<!-- 邮件验证 -->
+  <p>邮件验证<input type="email" name="email"></p>
+<!-- URL验证 -->
+  <p>URL验证 <input type="url" name="url"></p>
+<!-- 数值验证 -->
+  <p>数量验证 <input type="number" name="number" max="100" min="0" step="1"></p>
+<!--滑块 range-->
+  <p>滑块&nbsp音量调节 <input type="range" name="range" max="100" min="0" step="5"></p>
+<!-- 搜索 -->
+  <p>搜索框 <input type="search" name="search"></p>
+<!-- 增强鼠标可用性 -->
+  <p><label for="mark"> 点我</label> <input type="text" name="text" id="mark"></p>      <!-- 点击'点我' 会跳到for对应id-->
+<!-- 重置 提交 -->
+  <p><input type="reset" value="清空"> <input type="submit" value="提交"> </p>
+</form>
+
+</body>
+</html>
