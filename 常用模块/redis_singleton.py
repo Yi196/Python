@@ -44,7 +44,7 @@ class Queue_Singleton(object):
 
 
 class Redis_subscribe(object):
-    def __int__(self):
+    def __init__(self):
         self.chan_sub = config['redis_params']['chan_sub']
         self.conn_redis()
 
@@ -106,11 +106,7 @@ if __name__ == '__main__':
                 print(item['data'])
 
 
-    print(config['redis_params']['chan_sub'])
-    print(locals())
     redis_bd = Redis_subscribe()
-    print(redis_bd.chan_sub)
-    print(locals())
 
     # 开一个守护线程监听订阅的频道
     redis_sub = redis_bd.subscribe()
