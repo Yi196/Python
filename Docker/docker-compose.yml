@@ -1,0 +1,22 @@
+# 启动多个容器
+version: "3"
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:5000"
+  db:
+    image: "mysql"
+    environment:
+      MYSQL_DATABASE: root  # 数据库名称
+      MYSQL_ROOT_PASSWORD: root  # 数据库密码
+    volumes:
+      - docker_test_data:/var/lib/mysql  # 指定数据卷来永久存放数据
+
+volumes:
+  docker_test_data:
+
+
+# 运行所有容器
+# docker compose up -d
