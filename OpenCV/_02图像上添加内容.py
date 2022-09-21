@@ -36,7 +36,7 @@ cv.fillConvexPoly(img_3, triangle, (255, 255, 255))
 
 
 # 填充多个多边形
-img_4 = np.zeros((1080,1920,3), np.int8)
+img_4 = np.zeros((1080,1920,3), np.uint8)
 area1 = np.array([[250, 200], [300, 100], [750, 800], [100, 1000]])
 area2 = np.array([[1000, 200], [1500, 200], [1500, 400], [1000, 400]])
 cv.fillPoly(img_4, [area1, area2], (255, 255, 255))
@@ -53,7 +53,8 @@ img_5 = cv.polylines(img_5, pts, isClosed=True, color=(255, 125, 125), thickness
 img_1 = cv.imread(r'./image/003.jpg')
 gray = cv.cvtColor(img_1,cv.COLOR_BGR2GRAY)
 _, binary = cv.threshold(gray,50,255,cv.THRESH_BINARY)
-_,contours, hierarchy = cv.findContours(binary, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
+# _, contours, hierarchy = cv.findContours(binary, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)  # opencv3.4
+contours, hierarchy = cv.findContours(binary, cv.RETR_TREE, cv.CHAIN_APPROX_NONE)
 rect = cv.minAreaRect(contours[0])
 box = cv.boxPoints(rect)                                  # 先提取点集
 cv.drawContours(img_1, [np.int0(box)], 0, (0,0,255),2)    # 再绘制图像

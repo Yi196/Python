@@ -4,6 +4,10 @@ from PIL import Image
 import random
 
 
+# 将嵌套列表转为数组
+arr = np.asarray([[[1, 2, 1], [1, 2, 3]], [[1, 2, 1], [3, 2, 1]]], np.uint8)
+print(arr.shape)
+
 a = np.array([1,2,3,4,5,6,7,8])
 # np.histogram(a,bins=5,range=(0,1))计算直方图 bins=（5：均分为五组统计，[1,25,100]:分为[1,25)和[25，100)两组，range=(0,100)表示统计范围）
 print(np.histogram(a, bins=3))
