@@ -31,7 +31,7 @@ cv.arrowedLine(img, (10,10), (200,300), (0,128,255), thickness=2, line_type=8, s
 
 # 根据多个点的坐标填充多边形
 img_3 = np.zeros((1080, 1920, 3), np.uint8)
-triangle = np.array([[0, 0], [1500, 800], [500, 400]])
+triangle = np.array([[0, 0], [1500, 800], [500, 400]])  # 逆时针 多边形顶点坐标
 cv.fillConvexPoly(img_3, triangle, (255, 255, 255))
 
 

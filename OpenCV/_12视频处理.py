@@ -1,5 +1,6 @@
 import numpy as np
 import cv2 as cv
+import os
 
 #读取视频
 cap = cv.VideoCapture('./image/001.mp4')   #也可获取一个摄像头
@@ -13,15 +14,19 @@ while (cap.isOpened()):
     if cv.waitKey(25)&0xff==ord('q'):   #表示每25毫秒刷新一帧  按q退出
         break
 
-#查
+# 查
 print(cap.get(0))  #图像位置
 print(cap.get(1))  #当前帧位置
 print(cap.get(2))  #文件相对位置
 print(cap.get(3))  #帧宽度
+cap.get(cv.CAP_PROP_FRAME_WIDTH)
 print(cap.get(4))  #帧高度
+cap.get(cv.CAP_PROP_FRAME_HEIGHT)
 print(cap.get(5))  #帧率
+cap.get(cv.CAP_PROP_FPS)
 print(cap.get(6))  #编解码器四字符代码
 print(cap.get(7))  #视频总帧数
+cap.get(cv.CAP_PROP_FRAME_COUNT)
 fram_width = int(cap.get(3))
 fram_hight = int(cap.get(4))
 #修改
@@ -29,6 +34,7 @@ fram_hight = int(cap.get(4))
 
 #保存
 out = cv.VideoWriter('./image/002.avi',cv.VideoWriter_fourcc('D','I','V','X'),10,(fram_width,fram_hight))
+out1 = cv.VideoWriter('./image/002.mp4',cv.VideoWriter_fourcc(*'mp4v'),10,(fram_width,fram_hight))
            #参数为     保存地址               编解码器四字符代码 注意不同操作系统不同   帧率     帧大小（宽，高）
 while True:
     ret,fram = cap.read()
@@ -41,4 +47,21 @@ while True:
 #释放资源
 cap.release()
 out.release()
+cv.destroyAllWindows()
+
+
+# 由多张图片合成视频
+imgs_path = r'./image'
+names = os.listdir(imgs_path)
+
+fps = 30
+size = (1920, 1080)
+video = cv.VideoWriter(r'./image/001.avi', cv.VideoWriter_fourcc('I', '4', '2', '0'), fps, size)
+for name in names:
+    if name.endswith('.png'):
+        img_p = os.path.join(imgs_path, name)
+        img = cv.imread(img_p)
+        video.write(img)
+
+video.release()
 cv.destroyAllWindows()

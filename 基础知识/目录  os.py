@@ -21,11 +21,11 @@ print()
 import os.path
 print(os.path.abspath("字符串.py"))                                                 # 获取绝对路径
 print(os.path.exists("字符串.py"), os.path.exists("123.txt"))                       # 判断文件是否存在
-print(os.path.join("C:\\Users\\YJL\\Desktop\\package", "134.txt"))                 # 连接目录和文件
-print(os.path.splitext("C:\\Users\\YJL\\Desktop\\package\\134.txt"))               # 分离拓展名
-print(os.path.split("C:\\Users\\YJL\\Desktop\\package\\134.txt"))                  # 分离路径和文件名
+print(os.path.join(r"C:/Users/YJL/Desktop/Python练习/package", "134.txt"))          # 连接目录和文件
+print(os.path.splitext(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))         # 分离拓展名
+print(os.path.split(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))            # 分离路径和文件名
 print(os.path.splitext("134.txt"))                                                 # 分离拓展名   和文件名或路径
-print(os.path.splitext("C:\\Users\\YJL\\Desktop\\package\\134.txt"))               # 分离拓展名
-print(os.path.basename("C:\\Users\\YJL\\Desktop\\Python练习\\package\\134.txt"))    # 提取文件名
-print(os.path.dirname("C:\\Users\\YJL\\Desktop\\Python练习\\package\\134.txt"))     # 提取路径，不包含文件名
-print(os.path.isdir("C:\\Users\\YJL\\Desktop\\Python练习\\package\\134.txt"))       # 判断是否为路径
+print(os.path.splitext(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))         # 分离拓展名
+print(os.path.basename(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))         # 提取文件名
+print(os.path.dirname(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))          # 提取路径，不包含文件名
+print(os.path.isdir(r"C:/Users/YJL/Desktop/Python练习/package/134.txt"))             # 判断是否为路径

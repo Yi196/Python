@@ -364,3 +364,8 @@ python -m venv [name]       #创建虚拟环境
 先进入对应虚拟环境的Scripts文件夹
 再启动虚拟环境并安装所需模块
 pyinstaller -F [-w(不显示命令行)] app.py      #打包
+
+
+
+********************Mac*******************
+sudo launchctl disable docker   关闭root开机自启
