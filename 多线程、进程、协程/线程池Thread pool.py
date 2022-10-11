@@ -4,15 +4,15 @@ import time
 
 #线程池可查看各线程的返回值
 # 1
-with ThreadPoolExecutor() as pool:
-    results = pool.map(blog_spider.craw, blog_spider.urls)
+with ThreadPoolExecutor() as pool:   # max_workers=20 限制最大线程数
+    results = pool.map(blog_spider.craw, blog_spider.urls, timeout=10)
     # 返回结果顺序与urls一致
     for result in results:
         print(result)
 
 #2
 with ThreadPoolExecutor() as pool:
-    futures = [pool.submit(blog_spider.craw, url) for url in blog_spider.urls ]
+    futures = [pool.submit(blog_spider.craw, url) for url in blog_spider.urls]
     # 01返回结果顺序与urls一致
     for future in futures:
         print(future.result())

@@ -26,7 +26,7 @@ def set_logger(logdir, basename, level=logging.DEBUG):
         # 设置控制台中输出日志格式
         console.setFormatter(streamFormatter)
 
-        logger.addHandler(console )
+        logger.addHandler(console)
         logger.addHandler(rHandler)
     # logger.info('Start')
     return logger
