@@ -1,11 +1,13 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait
 import blog_spider
 import time
 
 #线程池可查看各线程的返回值
 # 1
-with ThreadPoolExecutor() as pool:   # max_workers=20 限制最大线程数
+with ThreadPoolExecutor(max_workers=10) as pool:   # max_workers=20 限制最大线程数
     results = pool.map(blog_spider.craw, blog_spider.urls, timeout=10)
+
+    wait(results)   # 等待所有线程都执行完后在运行主程序
     # 返回结果顺序与urls一致
     for result in results:
         print(result)
