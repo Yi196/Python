@@ -1,20 +1,22 @@
-from concurrent.futures import ThreadPoolExecutor, as_completed, wait
+from concurrent.futures import ThreadPoolExecutor, as_completed, wait, ALL_COMPLETED, FIRST_COMPLETED
 import blog_spider
 import time
 
 #线程池可查看各线程的返回值
 # 1
-with ThreadPoolExecutor(max_workers=10) as pool:   # max_workers=20 限制最大线程数
-    results = pool.map(blog_spider.craw, blog_spider.urls, timeout=10)
+with ThreadPoolExecutor(max_workers=10) as pool:   # max_workers=20 限制最大线程数 with 默认等待所有线程执行完
+    results = pool.map(blog_spider.craw, blog_spider.urls, timeout=10)  # map直接返回函数执行的结果，结果按启动顺序排序 超时会抛出异常
 
-    wait(results)   # 等待所有线程都执行完后在运行主程序
     # 返回结果顺序与urls一致
     for result in results:
         print(result)
 
 #2
 with ThreadPoolExecutor() as pool:
-    futures = [pool.submit(blog_spider.craw, url) for url in blog_spider.urls]
+    futures = [pool.submit(blog_spider.craw, url) for url in blog_spider.urls]  # submit()非阻塞 返回future对象
+
+    # wait(futures, timeout=10) # 超时时间 秒
+    # wait(futures, return_when=FIRST_COMPLETED)  # 当有线程完成时就停止等待
     # 01返回结果顺序与urls一致
     for future in futures:
         print(future.result())

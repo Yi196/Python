@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
 import redis_singleton
 
-redis_db = redis_singleton.Redis_Singleton()
+redis_db = redis_singleton.Redis_subscribe()
 redis_db.set('002','002nihaoya')
 redis_db.publish('*****************522222')
 print(redis_db.get('001'))

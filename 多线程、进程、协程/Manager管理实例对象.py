@@ -22,10 +22,11 @@ class Employee(object):        # 需要共享的实例
     def getpay(self):
         return self.name + ':' + str(self.salary.value)
 
+
 # 将需要共享的类对象注册在管理器类中
 MyManager.register('Employee', Employee)
 
-#定义进程锁
+
 def func1(em, lock):
     with lock:
         em.increase()
@@ -37,6 +38,7 @@ if __name__ == '__main__':
     manager.start()
     # 再实例化需共享的类
     em = manager.Employee('zhangsan', 1000)
+    # 定义进程锁
     lock = Lock()
 
     process = [Process(target=func1, args=(em, lock)) for _ in range(10)]

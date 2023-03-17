@@ -62,7 +62,9 @@ cv2.fillPoly(img_4, [area1, area2], (255, 255, 255))
 img_5 = np.zeros((1080,1920,3), np.int8)
 pts = np.array([[[250, 200], [300, 100], [750, 800], [100, 1000]],       # 两个四边形shape为[2,4,2]
                 [[1000, 200], [1500, 200], [1500, 400], [1000, 400]]])
-img_5 = cv2.polylines(img_5, pts, isClosed=True, color=(255, 125, 125), thickness=4,lineType=cv2.LINE_AA)  # isClosed=True 所画多边形闭合
+pts2 = [np.array([[250, 200], [300, 100], [750, 800], [100, 1000]]),
+        np.array([[1000, 200], [1500, 200], [1500, 400], [1000, 400], [800, 150]])]   # 当多边形的边数不一致时，不能直接使用np.array() np.asarray(), 这两个函数都要求数组内部维度一致
+img_5 = cv2.polylines(img_5, pts2, isClosed=True, color=(255, 125, 125), thickness=4, lineType=cv2.LINE_AA)  # isClosed=True 所画多边形闭合
 
 
 # 绘制带角度的矩形
