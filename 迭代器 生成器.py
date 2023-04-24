@@ -44,3 +44,29 @@ for i in fibs():
     if i>1000:
         break
     print(i,'\t',end='')
+
+
+print()
+
+def test1(num):
+    a = list(range(num))
+    yield a.pop()
+
+def test2(num):
+    a = list(range(num))
+    count = 0
+    while True:
+
+        yield a.pop()
+
+        count += 1
+        if count == num:
+            break
+
+print('#########')
+for i in test1(5):
+    print(i)
+
+print('#########')
+for i in test2(5):
+    print(i)

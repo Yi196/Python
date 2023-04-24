@@ -22,7 +22,7 @@ def set_logger(logdir, basename, level=logging.DEBUG):
         # 设置日志在控制台输出
         console = logging.StreamHandler()
         console.setLevel(logging.DEBUG)
-        streamFormatter = logging.Formatter('%(levelname)s - %(asctime)s - %(filename)s - %(message)s')
+        streamFormatter = logging.Formatter('%(levelname)s - %(asctime)s - %(filename)s - line: %(lineno)d - %(message)s')
         # 设置控制台中输出日志格式
         console.setFormatter(streamFormatter)
 

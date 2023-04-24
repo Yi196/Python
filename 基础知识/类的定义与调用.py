@@ -72,8 +72,36 @@ class Circle :
         return math.pi*math.pow(self.r,2)
     def perimeter(self):
         return math.pi*2*self.r
+
+
+class Test:
+    def __new__(cls, *args, **kwargs):
+        return super(Test, cls).__new__(cls)
+        # return object.__new__(cls)
+
+    def __init__(self, *args, **kwargs):
+        self.age = args[0]
+
+    def get_age(self):
+        return  self.age
+
+    @classmethod
+    def make(cls, num, *args, **kwargs):
+        lst = []
+        for i in range(num):
+            lst.append(cls.__new__(cls))
+
+        # 需要手动调用__init__()才能实例化对象
+        [i.__init__(*args, **kwargs) for i in lst]
+        return lst
+
+
 if __name__ == '__main__':
     num=float(input("请输入圆的半径"))
     c=Circle(num)
     print("圆的面积为:{:.3f}".format(c.arear()))
     print("圆的周长为:{:.3f}".format(c.perimeter()))
+
+    test_lst = Test.make(3, 18)
+    print(test_lst)
+    print(test_lst[1].get_age())

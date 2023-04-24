@@ -8,7 +8,7 @@ import torch.optim as optim                   #优化器
 #1 导入数据集
 batch_size = 1       #每次输入样本个数
 
-transform = transforms.Compose([                  #将彩图转为二值图
+transform = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.1307, ), (0.3081, ))  #均值、标准差
 ])
