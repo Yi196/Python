@@ -19,7 +19,7 @@ def xywh2xyxy(x):
 
 
 
-model = ct.models.MLModel('yolov7-nms.mlmodel')
+model = ct.models.MLModel('../weights/yolov7-nms.mlmodel')
 
 
 im = cv2.imread('../weights/test.jpg')

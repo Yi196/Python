@@ -24,3 +24,6 @@ data_set
 *.exe
 
 *.mlmodel
+
+/movenet_multipose_lightning_1
+/movenet_singlepose_thunder_4
