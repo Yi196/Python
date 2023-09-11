@@ -39,3 +39,20 @@ cv2.waitKey(0)
 # 图像增强评价函数
 def psnr(img_reference, img_denoise):
     return 10*np.log10(255*255.0/(((np.double(img_reference)-img_denoise)**2).mean()))
+
+# 计算图像清晰度
+
+# 将图像转换为灰度图像
+gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# 计算图像的Laplacian变换
+laplacian = cv2.Laplacian(gray_image, cv2.CV_64F)
+
+# 计算图像的清晰度得分
+sharpness = laplacian.var()
+print("图像清晰度得分：", sharpness)
+
+# 减小计算量
+scale = cv2.Sobel(img[0], cv2.CV_8U, 1, 0)
+sharpness = scale.var()
+print(sharpness)

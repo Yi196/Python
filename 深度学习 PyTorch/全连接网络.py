@@ -54,13 +54,13 @@ model = Net()
 
 #3 选择损失和优化器
 criterion = torch.nn.CrossEntropyLoss()   #交叉熵损失  （输入yhat， y）
-optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5 )     #实例化 优化器
+optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.5)     #实例化 优化器
 
 
 #4 训练
 def train(epoch):            #将训练定义为函数
     running_loss = 0.0
-    for batch_idx,(x,y) in enumerate(train_loader,0):
+    for batch_idx,(x,y) in enumerate(train_loader, 0):
         optimizer.zero_grad()
 
         #forward + backward + updata
@@ -71,7 +71,7 @@ def train(epoch):            #将训练定义为函数
 
         running_loss +=loss.item()
         if batch_idx % 300 == 299:
-            print('[%d,%5d] loss: %.3f' % (epoch+1, batch_idx+1, running_loss/300 ))
+            print('[%d,%5d] loss: %.3f' % (epoch+1, batch_idx+1, running_loss/300))
 
 
 def test():

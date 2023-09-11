@@ -1,25 +1,28 @@
-# # Import TF and TF Hub libraries.
-# import tensorflow as tf
-# import tensorflow_hub as hub
-#
-# # Load the input image.
-# image_path = 'PATH_TO_YOUR_IMAGE'
-# image = tf.io.read_file(image_path)
-# image = tf.compat.v1.image.decode_jpeg(image)
-# image = tf.expand_dims(image, axis=0)
-# # Resize and pad the image to keep the aspect ratio and fit the expected size.
-# image = tf.cast(tf.image.resize_with_pad(image, 256, 256), dtype=tf.int32)
-#
-# # Download the model from TF Hub.
-# model = hub.load("https://tfhub.dev/google/movenet/multipose/lightning/1")
-# movenet = model.signatures['serving_default']
-#
-# # Run model inference.
-# outputs = movenet(image)
-# # Output is a [1, 6, 56] tensor.
-# keypoints = outputs['output_0']
+import matplotlib.pyplot as plt
+import numpy as np
 
+# 生成示例数据
+categories = ['Category 1', 'Category 2', 'Category 3']
+time_periods = ['Time 1', 'Time 2', 'Time 3', 'Time 4']
+values = np.random.randint(1, 10, size=(len(categories), len(time_periods)))
 
-import os
+# 创建图表对象和子图对象
+fig, ax = plt.subplots()
 
-print(os.getcwd())
+# 设置柱状图的宽度
+bar_width = 0.2
+
+# 绘制柱状图
+for i, category in enumerate(categories):
+    x = np.arange(len(time_periods)) + i * bar_width
+    ax.bar(x, values[i], width=bar_width, label=category)
+
+# 设置 x 轴刻度和标签
+ax.set_xticks(np.arange(len(time_periods)) + bar_width * (len(categories) - 1) / 2)
+ax.set_xticklabels(time_periods)
+
+# 设置图例
+ax.legend()
+
+# 展示图表
+plt.show()

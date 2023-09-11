@@ -13,7 +13,7 @@ import cv2
 img = cv2.imread(r'./image/003.jpg')
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 _, binary = cv2.threshold(img_gray, 50, 255, cv2.THRESH_BINARY)
-_, contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
+contours, hierarchy = cv2.findContours(binary, cv2.RETR_LIST, cv2.CHAIN_APPROX_NONE)
 cv2.drawContours(img, contours, 2, (128, 0, 128), 5)
 
 # 图像的矩:moments()，HuMoments()

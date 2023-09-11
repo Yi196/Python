@@ -6,12 +6,11 @@ import os
 import time
 import traceback
 
-
-_DEPLOY = False
+use_localhost = False
 config = {
     'plc_params': {
-        'IP':'192.168.0.250' if _DEPLOY else "localhost",
-        'tcpPort':5001 if _DEPLOY else 502
+        'IP': "localhost" if use_localhost else "192.168.110.103",
+        'tcpPort': 5001,
     },
     #通讯及拍照地址， value=100进行拍照，拍照完写0。 给检测结果时写200作为标识位。
     'grab_addr': 0,
@@ -34,12 +33,11 @@ class PlcModule():
 
     def connectPlc(self):
         try:
-            client = ModbusClient()
-            client.port(config['plc_params']['tcpPort'])
-            client.host(config['plc_params']['IP'])
+            client = ModbusClient(host=config['plc_params']['IP'], port=config['plc_params']['tcpPort'])
+
             a = 5
             while a:
-                if not client.is_open():
+                if not client.is_open:
                     if not client.open():
                         self.logger.error(f"connect to PLC error!   TEST:{a}")
                         time.sleep(0.5)
@@ -51,7 +49,7 @@ class PlcModule():
 
             self.plc_client = client
 
-            if not self.plc_client.is_open():
+            if not self.plc_client.is_open:
                 self.logger.error("connect to PLC error")
             else:
                 self.logger.info("link PLC successful")
@@ -109,6 +107,20 @@ class PlcModule():
             self.logger.error('send detect_results failed! **write failed!')
         time.sleep(0.001)
 
+    def test(self):
+        if self.plc_client is None or not self.plc_client.is_open:
+            self.connectPlc()
+
+        print(f'get holding_registers: addr=0, num=3')
+        regs = self.plc_client.read_holding_registers(0, 3)
+        print(regs)
+
+        print(f'write holding_registers: addr=0, value=[1, 2, 3]')
+        self.plc_client.write_multiple_registers(0, [1, 2, 3])
+        print(f'get holding_registers: addr=0, num=3')
+        regs = self.plc_client.read_holding_registers(0, 3)
+        print(regs)
+
     def run(self):
         if self.plc_client is None:
             self.connectPlc()
@@ -119,7 +131,7 @@ class PlcModule():
             print('sending data to PLC')
             print('cur_data = %d'%data)
 
-            bRet = self.plc_client.is_open()
+            bRet = self.plc_client.is_open
             print('plc is open: '+str(bRet))
 
             regs = self.plc_client.read_coils(config['grab_addr'], 16)
@@ -154,4 +166,4 @@ class PlcModule():
 
 if __name__ == '__main__':
     test = PlcModule()
-    # test.run()
+    test.test()

@@ -1,11 +1,12 @@
-from pyModbusTCP.server import ModbusServer, DataBank
+from pyModbusTCP.server import ModbusServer
+import time
 import traceback
 from plcModule import config
 
 
 class ModbusServerClass(object):
     def __init__(self, address1=0, address_value1=(200, 300, 400), address2=3, address_value2=(404, 505, 606)):
-        self.ip = config['plc_params']['IP']      # 此处应和本机IP保持一致或为"localhost"
+        self.ip = config['plc_params']['IP']     # 此处应和本机IP保持一致或为"localhost"
         self.port = config['plc_params']['tcpPort']
         self.address1 = address1
         self.address2 = address2
@@ -14,8 +15,9 @@ class ModbusServerClass(object):
         try:
             self.server = ModbusServer(host=self.ip, port=self.port, no_block=True)
 
-            DataBank.set_words(self.address1,self.address_value1)
-            DataBank.set_words(self.address2,self.address_value2)
+            # holding register能读能写,input register能读不能写
+            self.server.data_bank.set_holding_registers(self.address1,self.address_value1)
+            self.server.data_bank.set_holding_registers(self.address2,self.address_value2)
 
             if not self.server.is_run:
                 self.server.start()
@@ -29,10 +31,13 @@ class ModbusServerClass(object):
             address = self.address1
         if number == None:
             number = len(self.address_value1)
-        return DataBank.get_words(address, number=number)
+        return self.server.data_bank.get_holding_registers(address, number=number)
+
 
 if __name__ == '__main__':
     modbus_server = ModbusServerClass()
-    values = modbus_server.get_address_valus()
-    print(values)
-    print('Modbus.server.is_run:', modbus_server.server.is_run)
+    while True:
+        values = modbus_server.get_address_valus()
+        print(values)
+        time.sleep(1)
+    # print('Modbus.server.is_run:', modbus_server.server.is_run)

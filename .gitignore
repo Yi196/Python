@@ -22,3 +22,5 @@ data_set
 *.mvdat
 *.log
 *.exe
+
+*.mlmodel
